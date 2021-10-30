@@ -8,37 +8,41 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-//itera sugli elementi dell'array in base all'indice
-const handleChange = (data, setData, index, language) => {
-  let items = [...data];
-  let item = items[index];
-  item.language = language;
-  setData(items);
+//si collega all'end point del server
+const fetchSites = async (setRows, setLoaded) => {
+  const sites = await axios.get("/phishstats").then((res) => res.data);
+  setRows(sites);
+  setLoaded(true);
+};
+
+const fetchLanguages = async (sites, setter) => {
+  console.log("FETCH::::", sites);
+  for (const site of sites) {
+    try {
+      const siteLang = await axios
+        .post("/phishingSiteLang", { url: site.url })
+        .then((res) => res.data);
+      let items = [...sites];
+      let item = items[site];
+      item.language = siteLang;
+      setter(items);
+    } catch (error) {
+      site.language = "ERR";
+      console.log(error);
+    }
+  }
 };
 
 export default function App() {
   const [rows, setRows] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    axios
-      .get("https://phishstats.info:2096/api/phishing?_size=10&_sort=-id")
-      .then((res) => {
-        setRows(res.data);
-        return res.data;
-      })
-      .then((data) =>
-        data.forEach((el, index) =>
-          axios
-            .post(`https://translate.argosopentech.com/detect`, {
-              q: `${el.url}`,
-              //q: `ciao`,
-            })
-            .then((res) => {
-              handleChange(data, setRows, index, res.data[0].language);
-            })
-        )
-      );
+    fetchSites(setRows, setLoaded);
+    fetchLanguages(rows, setRows);
   }, []);
+  console.log("ROWS::::", rows);
+
   return rows.length > 0 ? (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
