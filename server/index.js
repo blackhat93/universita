@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
-const { exec } = require("child_process");
 const axios = require("axios");
-const { error } = require("console");
 
 app.use(express.json());
 
@@ -11,7 +9,6 @@ app.get("/phishstats", async (req, res) => {
     const data = await axios
       .get("https://phishstats.info:2096/api/phishing?_size=10&_sort=-id")
       .then((res) => res.data);
-    console.log(data);
     res.status(200).send(data);
   } catch (error) {
     res.status(500).send({
@@ -37,6 +34,7 @@ app.post("/phishingSiteLang", async (req, res) => {
   }
 });
 
+//quando il server riceve una richiesta sul root in automatico mi va a prende l'index.html nella cartella build
 app.use(express.static("build"));
 
 app.listen(4000, () => {
