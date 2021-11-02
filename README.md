@@ -20,6 +20,10 @@ permette di vedere gli errori tramite console degli strumenti dii sviluppo.
 
 tramite l'uso di concurrently avvia sia server che client in modalità sviluppo.
 
+### `npm install`
+
+per installare le librerie di dipendenze dell'applicazione
+
 ### `npm run build`:
 
 costruisce la build dell'applicazione
@@ -27,7 +31,3 @@ costruisce la build dell'applicazione
 ### `npm run start:all`:
 
 avvia la versione finita e completa.
-
-### `npm install`
-
-per installare sul computer l'applicazione
