@@ -1,4 +1,4 @@
-//come il blocco div (container di Table) è il mio container personalizzato
+//creo un nuovo tag personalizzato che si comporta da container per gli altri tag
 const Layout = (props) => {
   return (
     <div>

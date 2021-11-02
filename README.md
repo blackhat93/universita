@@ -1,25 +1,29 @@
-# Getting Started with Create React App
+# puoi scaricare questa app da github al seguente url:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://github.com/blackhat93/universita
 
-## Available Scripts
+## i seguenti comandi ti permettono di esegure l'applicazione tramite npm (node package manager):
 
-In the project directory, you can run:
+## NOTA: bisogna aprire un terminale nella cartella "client" del progetto.
 
-### `npm start`
+### `npm run dev:client`:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+permette di avviare il client in modalità sviluppo, che può essere visitato a http://localhost:3000,
+permette di vedere gli errori tramite console degli strumenti dii sviluppo.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm run dev:server`
 
-### `npm run build`
+permette di avviare il server in modalità sviluppo che può essere visitato a http://localhost:4000,
+permette di vedere gli errori tramite console degli strumenti dii sviluppo.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm run dev:all`:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+tramite l'uso di concurrently avvia sia server che client in modalità sviluppo.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run start:all`:
+
+avvia la versione build e il server.
+
+### `npm run build`:
+
+costruisce la build dell'applicazione

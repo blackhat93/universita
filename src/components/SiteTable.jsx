@@ -8,7 +8,8 @@ import Paper from "@mui/material/Paper";
 import { CircularProgress } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-//styled è l'API di material che mi permette di fa css sui componenti di mui
+//la funzione styled è l'API di material che mi permette di fare il classico stile css sui componenti di mui
+//questo è lo stile delle celle della tabella
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -19,6 +20,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
+//questo è lo stile delle righe della tabella
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
@@ -29,9 +31,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+//restituisce il vero scheletro della tabella e vi incorpora dentro i dati ottenuti da phishingstats.info
 const SiteTable = (props) => {
   //specifica le proprieta da tirare fuori dall'oggetto props
   const { rows } = props;
+  //costruisce le colonne e le righe accedendo ai valori:
   return rows.length > 0 ? (
     <TableContainer component={Paper}>
       <Table>

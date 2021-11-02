@@ -4,6 +4,7 @@ const axios = require("axios");
 
 app.use(express.json());
 
+//alloca nella variabile data il risultato della chiamata GET fatta da axios, oppure restituisce un errore
 app.get("/phishstats", async (req, res) => {
   try {
     const data = await axios
@@ -18,10 +19,13 @@ app.get("/phishstats", async (req, res) => {
   }
 });
 
-//rida il linguaggio del contenuto
+//funzione creata per restituire il linguaggio del contenuto dei siti di phishing, effettua una POST a translate
+//per ogni sito di phishing dato da phishingstats.info, oppure restituisce l'errore creato
+
 app.post("/phishingSiteLang", async (req, res) => {
   const url = req.body.url;
   try {
+    //effettua per ogni sito una get ai vari url di phishing e li passa al parametro q per ottenere la lingua
     const site = await axios.get(url).then((response) => response.data);
     const lang = await axios
       .post(`https://translate.argosopentech.com/detect`, {
@@ -34,7 +38,7 @@ app.post("/phishingSiteLang", async (req, res) => {
   }
 });
 
-//quando il server riceve una richiesta sul root in automatico mi va a prende l'index.html nella cartella build
+//quando il server riceve una richiesta sul root in automatico mi va a prendere l'index.html nella cartella build
 app.use(express.static("build"));
 
 app.listen(4000, () => {
