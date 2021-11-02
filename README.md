@@ -20,10 +20,10 @@ permette di vedere gli errori tramite console degli strumenti dii sviluppo.
 
 tramite l'uso di concurrently avvia sia server che client in modalità sviluppo.
 
-### `npm run start:all`:
-
-avvia la versione build e il server.
-
 ### `npm run build`:
 
 costruisce la build dell'applicazione
+
+### `npm run start:all`:
+
+avvia la versione finita e completa.
