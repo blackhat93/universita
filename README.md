@@ -27,3 +27,7 @@ costruisce la build dell'applicazione
 ### `npm run start:all`:
 
 avvia la versione finita e completa.
+
+### `npm install`
+
+per installare sul computer l'applicazione
