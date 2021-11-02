@@ -31,7 +31,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-//restituisce il vero scheletro della tabella e vi incorpora dentro i dati ottenuti da phishingstats.info
+/*restituisce il vero scheletro della tabella e vi incorpora dentro i dati ottenuti da phishingstats.info
+A riga 70 la funzione a tre variabile permette di scrivere direttamente la lingua se la parte a sinistra 
+del punto interrogativo viene valutata vera (cioè se la lingua è disponibile) oppure di mostrare a video 
+la stringa "checking" se viene valuta falsa (cioè la lingua non è ancora disponibile) la parte a sinistra del
+punto interrogativo*/
 const SiteTable = (props) => {
   //specifica le proprieta da tirare fuori dall'oggetto props
   const { rows } = props;

@@ -1,7 +1,3 @@
-# puoi scaricare questa app da github al seguente url:
-
-https://github.com/blackhat93/universita
-
 ## i seguenti comandi ti permettono di esegure l'applicazione tramite npm (node package manager):
 
 ## NOTA: bisogna aprire un terminale nella cartella "client" del progetto.
